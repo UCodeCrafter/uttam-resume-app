@@ -14,6 +14,8 @@ import Item from '@mui/material/Grid';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { useState } from 'react';
+import { AlignHorizontalCenter, AlignHorizontalRight } from '@mui/icons-material';
 // src/components/Home/Home.js
 
 const NAVIGATION = [
@@ -69,6 +71,8 @@ function PageToolbar() {
     </PageContainerToolbar>
   );
 }
+
+
 
 export default function Home(props) {
   const { window } = props;
@@ -130,19 +134,8 @@ export default function Home(props) {
   //   </Container>
   // </React.Fragment>
 
-  <Grid container spacing={2}>
-  <Grid item xs={8}>
-    <Item>xs=8</Item>
-  </Grid>
-  <Grid item xs={4}>
-    <Item>xs=4</Item>
-  </Grid>
-  <Grid item xs={4}>
-    <Item>xs=4</Item>
-  </Grid>
-  <Grid item xs={8}>
-    <Item>xs=8</Item>
-  </Grid>
-</Grid>
+<div>
+  
+</div>
   );
 }
