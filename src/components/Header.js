@@ -1,5 +1,5 @@
 // src/components/Header.js
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { TypeAnimation } from 'react-type-animation';
 import './Header.css';
 import { AppBar, Toolbar, Typography, Link , Container, Box, Stack } from '@mui/material';
+import { DateTimeDisplay } from './sub-components/DateTimeDisplay';
 
 const pages = [
     { name: "Education", id: "education" },
@@ -15,6 +16,9 @@ const pages = [
     { name: "Testimonials", id: "testimonials" },
     { name: "Contact", id: "contact" },
 ];
+
+
+
 
 const Header = () => {
     return (
@@ -42,9 +46,12 @@ const Header = () => {
               </Stack>
             </Box>
           </Toolbar>
+        <DateTimeDisplay/>
         </Container>
+
       </AppBar>
     );
   };
   
   export default Header;
+ 
