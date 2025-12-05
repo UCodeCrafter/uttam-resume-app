@@ -1,0 +1,138 @@
+.about-section {
+  background: white;
+  padding: 80px 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.section-title span {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content h3 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.about-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image-box {
+  width: 350px;
+  height: 400px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-image-box {
+    width: 280px;
+    height: 350px;
+    font-size: 60px;
+  }
+}
