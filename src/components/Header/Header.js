@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import './Header.css';
 
 const Header = () => {
@@ -41,12 +43,14 @@ const Header = () => {
 
         {/* Social Links & CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div>
+          </div>
           <div className="navbar-social">
             <a href="https://linkedin.com/in/uttammodi" target="_blank" rel="noopener noreferrer" className="navbar-social-link">
-              in
+              <LinkedInIcon sx={{ fontSize: '24px' }} />
             </a>
             <a href="https://github.com/UCodeCrafter" target="_blank" rel="noopener noreferrer" className="navbar-social-link">
-              ◇
+              <GitHubIcon sx={{ fontSize: '24px' }} />
             </a>
           </div>
           <a href="mailto:uttammodi.asn@gmail.com" className="navbar-cta">
@@ -93,4 +97,4 @@ const Header = () => {
 };
 
 export default Header;
- 
+
