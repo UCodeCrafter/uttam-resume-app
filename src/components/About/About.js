@@ -24,7 +24,7 @@ const About = () => {
   };
 
   return (
-    <section className="about-section">
+    <section className="about-section" id="about">
       <div className="container">
         <motion.div
           className="section-header"

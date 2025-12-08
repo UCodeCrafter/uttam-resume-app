@@ -17,6 +17,19 @@ const Header = () => {
     { name: 'Education', path: '#education' },
   ];
 
+  // Handle smooth scroll to section
+  const handleNavClick = (e, path) => {
+    if (path.startsWith('#')) {
+      e.preventDefault();
+      const sectionId = path.substring(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setMobileMenuOpen(false); // Close mobile menu after click
+      }
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -34,9 +47,13 @@ const Header = () => {
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 400 }}
             >
-              <RouterLink to={link.path} className="navbar-link">
+              <a 
+                href={link.path} 
+                className="navbar-link"
+                onClick={(e) => handleNavClick(e, link.path)}
+              >
                 {link.name}
-              </RouterLink>
+              </a>
             </motion.li>
           ))}
         </ul>

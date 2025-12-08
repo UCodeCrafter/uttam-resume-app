@@ -51,7 +51,7 @@ const Experience = () => {
   };
 
   return (
-    <section className="experience-section">
+    <section className="experience-section" id="experience">
       <div className="container">
         <motion.div
           className="section-header"

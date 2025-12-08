@@ -66,7 +66,7 @@ const Education = () => {
   };
 
   return (
-    <section className="education-section">
+    <section className="education-section" id="education">
       <div className="container">
         <motion.div
           className="section-header"
