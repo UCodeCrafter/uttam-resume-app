@@ -1,49 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useResumeData } from '../../context/ResumeContext';
 import './Skills.css';
 
 const Skills = () => {
   const [animateProgress, setAnimateProgress] = useState(false);
+  const { skills } = useResumeData();
 
   useEffect(() => {
     setAnimateProgress(true);
   }, []);
-
-  const skillsData = [
-    {
-      category: 'Frontend',
-      icon: '⚛️',
-      skills: ['React', 'JavaScript', 'HTML/CSS', 'TypeScript', 'Tailwind CSS', 'Material UI'],
-      progressSkills: [
-        { name: 'React', level: 95 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'CSS/HTML', level: 92 },
-        { name: 'TypeScript', level: 85 },
-      ],
-    },
-    {
-      category: 'Backend',
-      icon: '🛠️',
-      skills: ['Node.js', 'Python', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs'],
-      progressSkills: [
-        { name: 'Node.js', level: 88 },
-        { name: 'Express', level: 87 },
-        { name: 'MongoDB', level: 85 },
-        { name: 'Python', level: 82 },
-      ],
-    },
-    {
-      category: 'Tools & Others',
-      icon: '🔧',
-      skills: ['Git', 'Docker', 'AWS', 'Firebase', 'Figma', 'Linux'],
-      progressSkills: [
-        { name: 'Git/GitHub', level: 92 },
-        { name: 'Docker', level: 80 },
-        { name: 'AWS', level: 75 },
-        { name: 'Firebase', level: 88 },
-      ],
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +32,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="skills-section">
+    <section className="skills-section" id="skills">
       <div className="container">
         <motion.div
           className="section-header"
@@ -88,7 +54,7 @@ const Skills = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {skillsData.map((category, index) => (
+          {skills && skills.map((category, index) => (
             <motion.div
               key={index}
               className="skill-category"
@@ -101,34 +67,40 @@ const Skills = () => {
               </h3>
 
               <div className="skill-list">
-                {category.skills.map((skill, idx) => (
+                {category.skills && category.skills.map((skill, idx) => (
                   <span key={idx} className="skill-badge">
                     {skill}
                   </span>
                 ))}
               </div>
 
-              <div style={{ marginTop: '30px' }}>
-                {category.progressSkills.map((skill, idx) => (
-                  <div key={idx} className="skill-item">
-                    <div className="skill-name">
-                      <span>{skill.name}</span>
-                      <span className="skill-percentage">
-                        {animateProgress ? skill.level : 0}%
-                      </span>
+              {category.descriptions && (
+                <p className="skill-description">{category.descriptions}</p>
+              )}
+
+              {category.progressSkills && category.progressSkills.length > 0 && (
+                <div style={{ marginTop: '30px' }}>
+                  {category.progressSkills.map((skill, idx) => (
+                    <div key={idx} className="skill-item">
+                      <div className="skill-name">
+                        <span>{skill.name}</span>
+                        <span className="skill-percentage">
+                          {animateProgress ? skill.level : 0}%
+                        </span>
+                      </div>
+                      <div className="skill-bar">
+                        <motion.div
+                          className="skill-progress"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, delay: idx * 0.1 }}
+                        />
+                      </div>
                     </div>
-                    <div className="skill-bar">
-                      <motion.div
-                        className="skill-progress"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: idx * 0.1 }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>
@@ -138,3 +110,4 @@ const Skills = () => {
 };
 
 export default Skills;
+

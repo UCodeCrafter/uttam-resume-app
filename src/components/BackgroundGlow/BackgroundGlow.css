@@ -1,0 +1,52 @@
+.bg-glow-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-glow-spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.18) 0%,
+    rgba(168, 85, 247, 0.1) 35%,
+    rgba(56, 189, 248, 0.05) 55%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+.bg-glow-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.4) 0%,
+    rgba(99, 102, 241, 0.2) 60%,
+    transparent 100%
+  );
+  filter: blur(6px);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .bg-glow-wrapper {
+    display: none;
+  }
+}

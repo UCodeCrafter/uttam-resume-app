@@ -1,58 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useResumeData } from '../../context/ResumeContext';
 import './Projects.css';
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with product catalog, shopping cart, and payment integration.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      icon: '🛍️',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Task Management App',
-      description: 'Collaborative task management tool with real-time updates and team collaboration features.',
-      tech: ['React', 'Firebase', 'TypeScript', 'Tailwind CSS'],
-      icon: '✅',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Weather Dashboard',
-      description: 'Interactive weather dashboard displaying real-time weather data with beautiful visualizations.',
-      tech: ['React', 'API Integration', 'Chart.js', 'CSS3'],
-      icon: '🌤️',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Social Media Analytics',
-      description: 'Analytics dashboard for tracking social media metrics and performance across platforms.',
-      tech: ['React', 'Python', 'PostgreSQL', 'D3.js'],
-      icon: '📊',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Blog Platform',
-      description: 'Modern blogging platform with markdown support, categories, and user authentication.',
-      tech: ['Next.js', 'Prisma', 'PostgreSQL', 'AWS S3'],
-      icon: '📝',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Chat Application',
-      description: 'Real-time chat application with video calling, file sharing, and message encryption.',
-      tech: ['React', 'Socket.io', 'WebRTC', 'Express'],
-      icon: '💬',
-      link: '#',
-      github: '#',
-    },
-  ];
+  const { projects } = useResumeData();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,31 +49,37 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {projects.map((project, index) => (
+          {projects && projects.map((project, index) => (
             <motion.div
               key={index}
               className="project-card"
               variants={cardVariants}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="project-image">{project.icon}</div>
+              <div className="project-image">{project.icon || '🚀'}</div>
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
-                <div className="project-tech">
-                  {project.tech.map((tech, idx) => (
-                    <span key={idx} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                {project.tech && (
+                  <div className="project-tech">
+                    {project.tech.map((tech, idx) => (
+                      <span key={idx} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className="project-links">
-                  <a href={project.link} className="project-link project-link-primary">
-                    View Live
-                  </a>
-                  <a href={project.github} className="project-link">
-                    GitHub
-                  </a>
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link project-link-primary">
+                      View Live
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                      GitHub
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -133,3 +91,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

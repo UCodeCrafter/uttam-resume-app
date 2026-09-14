@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useResumeData } from '../../context/ResumeContext';
+import originalPhoto from '../../assets/original-photo.jpg';
 import './About.css';
 
 const About = () => {
+  const { about } = useResumeData();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,9 +38,9 @@ const About = () => {
           viewport={{ once: true }}
         >
           <h2 className="section-title">
-            About <span>Me</span>
+            {about.title || 'About'} <span>{about.highlightTitle || 'Me'}</span>
           </h2>
-          <p className="section-subtitle">Get to know who I am and what I do</p>
+          <p className="section-subtitle">{about.subtitle || 'Get to know who I am and what I do'}</p>
         </motion.div>
 
         <motion.div
@@ -48,41 +52,35 @@ const About = () => {
         >
           {/* Content */}
           <motion.div className="about-content" variants={itemVariants}>
-            <h3>Hi! I'm Uttam Modi</h3>
-            <p>
-              I'm a passionate Full Stack Developer with 3+ years of experience in building scalable web applications. 
-              I specialize in React, Node.js, and modern web technologies. I love transforming complex problems into 
-              simple, beautiful, and intuitive designs.
-            </p>
-            <p>
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-              or writing technical blogs. I believe in continuous learning and staying updated with the latest industry trends.
-            </p>
-            <p>
-              My goal is to create impactful digital solutions that make a difference in people's lives. Let's build 
-              something amazing together!
-            </p>
+            <h3>{about.greeting || "Hi! I'm Uttam Modi"}</h3>
+            {about.paragraphs && about.paragraphs.length > 0 ? (
+              about.paragraphs.map((para, idx) => <p key={idx}>{para}</p>)
+            ) : (
+              <p>
+                I'm a passionate Full Stack Developer with experience in building scalable web applications.
+              </p>
+            )}
 
-            <div className="stats-grid">
-              <motion.div className="stat-card" whileHover={{ scale: 1.05 }}>
-                <div className="stat-number">50+</div>
-                <div className="stat-label">Projects Completed</div>
-              </motion.div>
-              <motion.div className="stat-card" whileHover={{ scale: 1.05 }}>
-                <div className="stat-number">100+</div>
-                <div className="stat-label">Happy Clients</div>
-              </motion.div>
-              <motion.div className="stat-card" whileHover={{ scale: 1.05 }}>
-                <div className="stat-number">3+</div>
-                <div className="stat-label">Years Experience</div>
-              </motion.div>
-            </div>
+            {about.stats && about.stats.length > 0 && (
+              <div className="stats-grid">
+                {about.stats.map((stat, idx) => (
+                  <motion.div key={idx} className="stat-card" whileHover={{ scale: 1.05 }}>
+                    <div className="stat-number">{stat.number}</div>
+                    <div className="stat-label">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Image */}
           <motion.div className="about-image" variants={itemVariants}>
             <div className="about-image-box">
-              🚀
+              {about.avatarUrl || (about.avatar && (about.avatar.startsWith('http') || about.avatar.startsWith('/'))) ? (
+                <img src={about.avatarUrl || about.avatar} alt="Uttam Modi" />
+              ) : (
+                <img src={originalPhoto} alt="Uttam Modi" />
+              )}
             </div>
           </motion.div>
         </motion.div>
@@ -92,3 +90,4 @@ const About = () => {
 };
 
 export default About;
+

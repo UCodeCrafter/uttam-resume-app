@@ -1,17 +1,19 @@
 .navbar {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95));
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid rgba(255, 215, 0, 0.1);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
-  max-width: 1200px;
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,19 +25,23 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 26px;
   transition: all 0.3s ease;
 }
 
 .navbar-brand:hover {
-  color: #ffd700;
-  transform: scale(1.05);
+  color: var(--accent-cyan);
+  transform: scale(1.03);
 }
 
 .navbar-logo {
-  font-size: 32px;
+  font-size: 34px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .navbar-menu {
@@ -43,30 +49,50 @@
   gap: 40px;
   align-items: center;
   list-style: none;
+  margin-left: 40px;
+  margin-right: auto;
+}
+
+.nav-item-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-monkey-peek {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  pointer-events: none;
+  z-index: 1005;
 }
 
 .navbar-link {
-  color: white;
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .navbar-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -6px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: #ffd700;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gradient-primary);
   transition: width 0.3s ease;
 }
 
 .navbar-link:hover {
-  color: #ffd700;
+  color: var(--text-primary);
 }
 
 .navbar-link:hover::after {
@@ -74,20 +100,20 @@
 }
 
 .navbar-cta {
-  background: white;
-  color: #667eea;
-  padding: 10px 25px;
-  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 11px 28px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  border: 2px solid white;
+  border: none;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
 .navbar-cta:hover {
-  background: transparent;
-  color: white;
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
 }
 
 .hamburger {
@@ -102,7 +128,7 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: white;
+  background: var(--text-primary);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
@@ -125,11 +151,13 @@
   top: 80px;
   left: 0;
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
   flex-direction: column;
   gap: 0;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border-card);
 }
 
 .navbar-menu-mobile.active {
@@ -138,7 +166,7 @@
 
 .navbar-menu-mobile .navbar-link {
   padding: 15px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-card);
   font-size: 18px;
 }
 
@@ -149,14 +177,14 @@
 }
 
 .navbar-social-link {
-  color: white;
+  color: var(--text-secondary);
   font-size: 18px;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .navbar-social-link:hover {
-  color: #ffd700;
+  color: var(--accent-cyan);
   transform: translateY(-3px);
 }
 
@@ -170,7 +198,7 @@
   }
 
   .navbar-container {
-    height: auto;
+    height: 70px;
     padding: 15px 20px;
   }
 
@@ -190,4 +218,3 @@
     font-size: 28px;
   }
 }
-  

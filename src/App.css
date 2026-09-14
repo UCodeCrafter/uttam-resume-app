@@ -1,4 +1,4 @@
-﻿/* Global App Styles */
+/* Global App Styles */
 * {
   margin: 0;
   padding: 0;
@@ -8,17 +8,31 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .App {
   width: 100%;
   overflow-x: hidden;
-  color: #333;
+  color: var(--text-primary);
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 35%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 20% 65%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 36px 36px;
+  background-attachment: fixed;
+  position: relative;
 }
 
 main {
+  position: relative;
+  z-index: 2;
   min-height: 100vh;
 }
