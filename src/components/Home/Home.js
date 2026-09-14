@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { useResumeData } from '../../context/ResumeContext';
+import avatarImage from '../../assets/avatarImage';
 import { getTechIcon } from './TechIcons';
 import './Home.css';
 
