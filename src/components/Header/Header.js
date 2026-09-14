@@ -84,6 +84,8 @@ const Header = () => {
 
         {/* Social Links & CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div>
+          </div>
           <div className="navbar-social">
             {personal.socialLinks?.linkedin && (
               <a href={personal.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="navbar-social-link">
