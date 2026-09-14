@@ -1,7 +1,5 @@
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore, doc, onSnapshot } from 'firebase/firestore';
-import { getDatabase, ref, onValue } from 'firebase/database';
-
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,104 +11,70 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-// Check if valid configuration exists
+// Check if valid configuration exists for Realtime Database
 export const isFirebaseConfigured = Boolean(
   firebaseConfig.apiKey &&
   firebaseConfig.apiKey !== 'your_api_key_here' &&
-  firebaseConfig.projectId &&
-  firebaseConfig.projectId !== 'your_project_id'
+  firebaseConfig.databaseURL &&
+  firebaseConfig.databaseURL !== 'your_database_url_here'
 );
 
 let app = null;
-let firestoreDb = null;
 let realtimeDb = null;
 
 if (isFirebaseConfigured) {
   try {
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-    firestoreDb = getFirestore(app);
-    if (firebaseConfig.databaseURL) {
-      realtimeDb = getDatabase(app);
-    }
+    realtimeDb = getDatabase(app);
   } catch (error) {
-    console.warn('Firebase initialization error:', error);
+    console.warn('Firebase Realtime Database initialization error:', error);
   }
 }
 
 /**
- * Subscribe to resume data updates (Firestore or Realtime Database).
- * Falls back to Firestore collection "resume", doc "uttam", or Realtime DB ref "resumeData".
+ * Subscribe to resume data updates from Firebase Realtime Database.
+ * Listens to real-time changes at the database root.
  */
 export const subscribeToResumeData = (onDataReceived, onError) => {
-  if (!isFirebaseConfigured || (!firestoreDb && !realtimeDb)) {
-    onError && onError(new Error('Firebase is not configured'));
-    return () => { };
+  if (!isFirebaseConfigured || !realtimeDb) {
+    onError && onError(new Error('Firebase Realtime Database is not configured'));
+    return () => {};
   }
 
-  // 1. Primary: Read from Firebase Realtime Database root ('/') where JSON is imported
-  if (realtimeDb) {
-    try {
-      const rtdbRef = ref(realtimeDb, '/');
-      const unsubscribe = onValue(
-        rtdbRef,
-        (snapshot) => {
-          if (snapshot.exists()) {
-            const data = snapshot.val();
-            // Check if root has resume data
-            if (data && (data.personal || data.skills || data.projects || data.about)) {
-              onDataReceived(data);
-              return;
-            }
-          }
-          // Fallback to Firestore if RTDB root is empty
-          if (firestoreDb) {
-            subscribeFirestore(onDataReceived, onError);
-          }
-        },
-        (err) => {
-          console.warn('Realtime DB read error, trying Firestore fallback:', err);
-          if (firestoreDb) {
-            subscribeFirestore(onDataReceived, onError);
-          } else {
-            onError && onError(err);
-          }
-        }
-      );
-      return unsubscribe;
-    } catch (e) {
-      console.warn('Realtime DB error:', e);
-    }
-  }
-
-  // 2. Secondary Fallback: Firestore
-  if (firestoreDb) {
-    return subscribeFirestore(onDataReceived, onError);
-  }
-
-  return () => { };
-};
-
-const subscribeFirestore = (onDataReceived, onError) => {
   try {
-    const docRef = doc(firestoreDb, 'resume', 'uttam');
-    return onSnapshot(
-      docRef,
-      (docSnap) => {
-        if (docSnap.exists()) {
-          onDataReceived(docSnap.data());
+    const rtdbRef = ref(realtimeDb, '/');
+    const unsubscribe = onValue(
+      rtdbRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          onDataReceived(data);
         } else {
-          onError && onError(new Error('No document found in Firestore'));
+          onDataReceived(null);
         }
       },
-      (err) => onError && onError(err)
+      (err) => {
+        console.warn('Realtime Database read error:', err);
+        onError && onError(err);
+      }
     );
+    return unsubscribe;
   } catch (e) {
+    console.warn('Realtime Database subscription error:', e);
     onError && onError(e);
-    return () => { };
+    return () => {};
   }
 };
 
-export { app, firestoreDb, realtimeDb };
+/**
+ * Update / Save resume data to Firebase Realtime Database.
+ */
+export const saveResumeData = async (data) => {
+  if (!isFirebaseConfigured || !realtimeDb) {
+    throw new Error('Firebase Realtime Database is not configured');
+  }
+  const rtdbRef = ref(realtimeDb, '/');
+  return set(rtdbRef, data);
+};
 
-
-
+export { app, realtimeDb };
