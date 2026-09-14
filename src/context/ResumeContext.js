@@ -100,8 +100,8 @@ const defaultProjectsData = [
     title: "Interactive Developer Portfolio & Resume App",
     description: "Modern, glassmorphic React portfolio app featuring 3D tilt interaction, live Firebase synchronization, background particle glow, and automated CI/CD pipeline.",
     tech: ["React.js", "Framer Motion", "Firebase", "Docker", "CSS3"],
-    github: "https://github.com/UCodeCrafter/uttam-resume-app",
-    link: "https://UCodeCrafter.github.io/uttam-resume-app",
+    github: "https://github.com/UCodeCrafter/uttammodi",
+    link: "https://UCodeCrafter.github.io/uttammodi",
     icon: "🚀"
   },
   {
