@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "https://UCodeCrafter.github.io/uttam-resume-app/static/css/main.51f24f6a.css",
-    "main.js": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.76c1b840.js",
+    "main.js": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.fa8c9069.js",
     "static/media/original-photo.jpg": "https://UCodeCrafter.github.io/uttam-resume-app/static/media/original-photo.1dafcda987319ada9e43.jpg",
     "index.html": "https://UCodeCrafter.github.io/uttam-resume-app/index.html",
     "main.51f24f6a.css.map": "https://UCodeCrafter.github.io/uttam-resume-app/static/css/main.51f24f6a.css.map",
-    "main.76c1b840.js.map": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.76c1b840.js.map"
+    "main.fa8c9069.js.map": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.fa8c9069.js.map"
   },
   "entrypoints": [
     "static/css/main.51f24f6a.css",
-    "static/js/main.76c1b840.js"
+    "static/js/main.fa8c9069.js"
   ]
 }
