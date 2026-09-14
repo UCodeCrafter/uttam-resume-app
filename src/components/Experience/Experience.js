@@ -1,34 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useResumeData } from '../../context/ResumeContext';
 import './Experience.css';
 
 const Experience = () => {
-  const experiences = [
-    {
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Innovations Inc.',
-      duration: 'Jan 2023 - Present',
-      description: 'Leading development of scalable web applications using React and Node.js. Mentoring junior developers and implementing best practices.',
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'Digital Solutions Ltd.',
-      duration: 'Jun 2021 - Dec 2022',
-      description: 'Developed and maintained 15+ web applications. Improved application performance by 40% through optimization techniques.',
-    },
-    {
-      title: 'Junior Web Developer',
-      company: 'StartUp Hub',
-      duration: 'Jan 2021 - May 2021',
-      description: 'Built responsive web pages using HTML, CSS, and JavaScript. Collaborated with design team to implement UI/UX designs.',
-    },
-    {
-      title: 'Freelance Developer',
-      company: 'Self Employed',
-      duration: 'Aug 2020 - Dec 2020',
-      description: 'Created custom websites for small businesses. Provided technical support and maintenance services.',
-    },
-  ];
+  const { experience } = useResumeData();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,7 +49,7 @@ const Experience = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {experiences.map((exp, index) => (
+          {experience && experience.map((exp, index) => (
             <motion.div key={index} className="timeline-item" variants={itemVariants}>
               <div className="timeline-marker" />
               <div className="timeline-content">
@@ -91,3 +67,4 @@ const Experience = () => {
 };
 
 export default Experience;
+

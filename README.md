@@ -244,6 +244,108 @@ The app is configured to deploy to: `/uttam-resume-app/`
 
 ## 📝 License
 
+## 🐳 Dockerization & ⚡ GitHub Actions CI/CD
+
+### 🐳 Running with Docker Locally
+
+1. **Build Docker Image**
+```bash
+docker build -t uttam-resume-app .
+```
+
+2. **Run Container**
+```bash
+docker run -d -p 8080:80 --name uttam-portfolio uttam-resume-app
+```
+Access the application at `http://localhost:8080`
+
+3. **Or Run via Docker Compose**
+```bash
+docker-compose up -d --build
+```
+To stop the container: `docker-compose down`
+
+---
+
+### ⚡ GitHub Actions CI/CD Pipeline
+
+The project includes an automated GitHub Actions CI/CD workflow ([`.github/workflows/docker-ci.yml`](file:///.github/workflows/docker-ci.yml)):
+
+- **Automated Testing & Build**: Runs `npm ci` and `npm run build` on every push and pull request.
+- **Docker Container Build**: Uses Docker Buildx with layer caching for ultra-fast builds.
+- **Publish to GHCR**: Automatically builds and pushes Docker images to GitHub Container Registry (`ghcr.io/ucodecrafter/uttam-resume-app:latest`).
+
+---
+
+## 🌟 Customization
+
+To personalize this portfolio:
+
+1. **Update Personal Info**
+   - Edit contact details in `Header.js`
+   - Update about text in `About.js`
+
+2. **Modify Experience**
+   - Edit experience data in `Experience.js`
+   - Add your own job titles and descriptions
+
+3. **Add Projects**
+   - Update project list in `Projects.js`
+   - Include links to your GitHub repos
+
+4. **Update Skills**
+   - Modify skill categories in `Skills.js`
+   - Adjust proficiency levels
+
+5. **Change Colors**
+   - Edit gradient values in `App.css`
+   - Customize component styles in respective CSS files
+
+## 🔧 Configuration
+
+The app is configured to deploy to: `/uttam-resume-app/`
+(Update `homepage` in `package.json` if deploying elsewhere)
+
+## 📊 Performance
+
+- **Optimized Build Size**: 95.35 kB (JS) + 4.06 kB (CSS) gzipped
+- **Responsive Design**: Mobile-first approach
+- **Smooth Animations**: GPU-accelerated with Framer Motion
+- **SEO Ready**: Semantic HTML structure
+
+## 🎨 Design Highlights
+
+- **Color Scheme**: Purple/Blue gradient theme
+- **Typography**: Professional sans-serif fonts
+- **Layout**: Clean, modern card-based design
+- **Interactions**: Smooth hover effects and transitions
+- **Animations**: Fade-in, slide-in effects on scroll
+- **Accessibility**: WCAG compliant, keyboard navigation support
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 👨‍💻 Author
+
+**Uttam Modi** - Full Stack Java Developer
+- Email: [uttammodi.asn@gmail.com](mailto:uttammodi.asn@gmail.com)
+- LinkedIn: [linkedin.com/in/uttammodi](https://linkedin.com/in/uttammodi)
+- GitHub: [github.com/UCodeCrafter](https://github.com/UCodeCrafter)
+
+## 📞 Contact & Portfolio
+
+- **Portfolio**: [https://ucodecrafter.github.io/uttam-resume-app/](https://ucodecrafter.github.io/uttam-resume-app/)
+- **Email**: uttammodi.asn@gmail.com
+- **LinkedIn**: [Uttam Modi](https://linkedin.com/in/uttammodi)
+- **GitHub**: [UCodeCrafter](https://github.com/UCodeCrafter)
+
+## 📝 License
+
 This project is open source and available under the MIT License.
 
 ---
