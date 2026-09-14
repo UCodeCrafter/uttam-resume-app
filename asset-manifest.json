@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/uttam-resume-app/static/css/main.51f24f6a.css",
-    "main.js": "/uttam-resume-app/static/js/main.b487a6db.js",
+    "main.js": "/uttam-resume-app/static/js/main.adfabc50.js",
     "static/media/original-photo.jpg": "/uttam-resume-app/static/media/original-photo.1dafcda987319ada9e43.jpg",
     "index.html": "/uttam-resume-app/index.html",
     "main.51f24f6a.css.map": "/uttam-resume-app/static/css/main.51f24f6a.css.map",
-    "main.b487a6db.js.map": "/uttam-resume-app/static/js/main.b487a6db.js.map"
+    "main.adfabc50.js.map": "/uttam-resume-app/static/js/main.adfabc50.js.map"
   },
   "entrypoints": [
     "static/css/main.51f24f6a.css",
-    "static/js/main.b487a6db.js"
+    "static/js/main.adfabc50.js"
   ]
 }
