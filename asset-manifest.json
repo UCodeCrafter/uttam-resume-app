@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/uttam-resume-app/static/css/main.76e5ac43.css",
-    "main.js": "/uttam-resume-app/static/js/main.678de3b0.js",
+    "main.css": "/uttam-resume-app/static/css/main.87f7d6f8.css",
+    "main.js": "/uttam-resume-app/static/js/main.7f3b9a72.js",
+    "static/media/original-photo.jpg": "/uttam-resume-app/static/media/original-photo.1dafcda987319ada9e43.jpg",
     "index.html": "/uttam-resume-app/index.html",
-    "main.76e5ac43.css.map": "/uttam-resume-app/static/css/main.76e5ac43.css.map",
-    "main.678de3b0.js.map": "/uttam-resume-app/static/js/main.678de3b0.js.map"
+    "main.87f7d6f8.css.map": "/uttam-resume-app/static/css/main.87f7d6f8.css.map",
+    "main.7f3b9a72.js.map": "/uttam-resume-app/static/js/main.7f3b9a72.js.map"
   },
   "entrypoints": [
-    "static/css/main.76e5ac43.css",
-    "static/js/main.678de3b0.js"
+    "static/css/main.87f7d6f8.css",
+    "static/js/main.7f3b9a72.js"
   ]
 }
