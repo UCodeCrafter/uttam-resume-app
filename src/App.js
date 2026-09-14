@@ -14,10 +14,24 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import BackgroundGlow from './components/BackgroundGlow/BackgroundGlow';
 import FirebaseSyncControl from './components/FirebaseSyncControl';
 
+// Helper to ensure basename is always a pathname (e.g., "/uttam-resume-app") and not a full URL
+const getBasename = () => {
+  const publicUrl = process.env.PUBLIC_URL || '';
+  if (publicUrl.startsWith('http://') || publicUrl.startsWith('https://')) {
+    try {
+      const urlPath = new URL(publicUrl).pathname;
+      return urlPath.endsWith('/') && urlPath.length > 1 ? urlPath.slice(0, -1) : urlPath;
+    } catch (e) {
+      return '';
+    }
+  }
+  return publicUrl.endsWith('/') && publicUrl.length > 1 ? publicUrl.slice(0, -1) : publicUrl;
+};
+
 function App() {
   return (
     <ResumeProvider>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={getBasename()}>
         <div className="App">
           <BackgroundGlow />
           <Header />

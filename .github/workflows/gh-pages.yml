@@ -31,7 +31,7 @@ jobs:
       - name: Build Project
         run: npm run build
         env:
-          PUBLIC_URL: https://UCodeCrafter.github.io/uttam-resume-app
+          PUBLIC_URL: /uttam-resume-app
 
       - name: Deploy to GitHub Pages
         uses: PeaceIris/actions-gh-pages@v4
