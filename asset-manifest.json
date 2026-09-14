@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/uttam-resume-app/static/css/main.51f24f6a.css",
-    "main.js": "/uttam-resume-app/static/js/main.e6d69120.js",
-    "static/media/original-photo.jpg": "/uttam-resume-app/static/media/original-photo.1dafcda987319ada9e43.jpg",
-    "index.html": "/uttam-resume-app/index.html",
-    "main.51f24f6a.css.map": "/uttam-resume-app/static/css/main.51f24f6a.css.map",
-    "main.e6d69120.js.map": "/uttam-resume-app/static/js/main.e6d69120.js.map"
+    "main.css": "https://UCodeCrafter.github.io/uttam-resume-app/static/css/main.51f24f6a.css",
+    "main.js": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.fa8c9069.js",
+    "static/media/original-photo.jpg": "https://UCodeCrafter.github.io/uttam-resume-app/static/media/original-photo.1dafcda987319ada9e43.jpg",
+    "index.html": "https://UCodeCrafter.github.io/uttam-resume-app/index.html",
+    "main.51f24f6a.css.map": "https://UCodeCrafter.github.io/uttam-resume-app/static/css/main.51f24f6a.css.map",
+    "main.fa8c9069.js.map": "https://UCodeCrafter.github.io/uttam-resume-app/static/js/main.fa8c9069.js.map"
   },
   "entrypoints": [
     "static/css/main.51f24f6a.css",
-    "static/js/main.e6d69120.js"
+    "static/js/main.fa8c9069.js"
   ]
 }
